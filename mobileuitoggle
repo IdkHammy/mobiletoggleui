@@ -1,0 +1,48 @@
+game.CoreGui:findFirstChild("ScreenGui").Enabled = false
+
+-- Create ScreenGui
+local screenGui = Instance.new("ScreenGui")
+local playerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+screenGui.Parent = playerGui
+
+-- Create Frame
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 200, 0, 100)
+frame.Position = UDim2.new(0.5, -100, 0, 0) -- Top center of the screen
+frame.BackgroundColor3 = Color3.new(0.2, 0.2, 0.2)
+frame.Active = true
+frame.Draggable = true
+frame.Parent = screenGui
+
+-- Create TextLabel
+local textLabel = Instance.new("TextLabel")
+textLabel.Size = UDim2.new(0.8, 0, 0.2, 0)
+textLabel.Position = UDim2.new(0.1, 0, 0.1, 0)
+textLabel.BackgroundColor3 = Color3.new(0.8, 0.8, 0.8)
+textLabel.TextColor3 = Color3.new(0, 0, 0)
+textLabel.Text = "nigger"
+textLabel.Parent = frame
+
+-- Create Button
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(0.8, 0, 0.2, 0)
+button.Position = UDim2.new(0.1, 0, 0.4, 0)
+button.BackgroundColor3 = Color3.new(0.5, 0.5, 0.5)
+button.TextColor3 = Color3.new(1, 1, 1)
+button.Text = "Toggle Shaddow GUI"
+button.Parent = frame
+
+-- Button click event to toggle the visibility of 'By Shaddow' GUI
+button.MouseButton1Click:Connect(function()
+    -- Find the 'By Shaddow' GUI element within PlayerGui
+    local shaddowGui = game.CoreGui:findFirstChild("ScreenGui")
+    if shaddowGui then
+        -- Toggle the visibility
+        shaddowGui.Enabled = not shaddowGui.Enabled
+        -- Update button text based on visibility
+        button.Text = shaddowGui.Enabled and "hide" or "show"
+    else
+        -- If 'By Shaddow' is not found, output a message
+        print("By Shaddow GUI not found.")
+    end
+end)
